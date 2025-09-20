@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container my-4">
+  <h2 class="text-center mb-4">Billing Page</h2>
+
+  <!-- Responsive table wrapper -->
+  <div class="table-responsive">
+    <table class="table table-bordered align-middle text-center">
+      <thead class="table-light">
+        <tr>
+          <th>Item</th>
+          <th>Unit</th>
+          <th>Price</th>
+          <th>Qty</th>
+          <th>Subtotal</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="billBody"></tbody>
+    </table>
+  </div>
+
+  <!-- Controls -->
+  <div class="d-flex flex-wrap gap-2 mb-3">
+    <button id="addRowBtn" class="btn btn-primary">Add Row</button>
+    <button id="clearBtn" class="btn btn-warning">Clear All</button>
+  </div>
+
+  <div class="mb-3">
+    <label for="paymentMethod" class="form-label">Payment Method:</label>
+    <select id="paymentMethod" class="form-select w-100 w-md-25">
+      <option value="Cash">Cash</option>
+      <option value="Card">Card</option>
+      <option value="Online">Online</option>
+    </select>
+  </div>
+
+  <div class="mb-3">
+    <strong>Total: <span id="totalAmt">₹ 0.00</span></strong>
+  </div>
+
+  <button id="saveBillBtn" class="btn btn-success">Save Bill</button>
+</div>
+
+<!-- Your script -->
+<script>
+  {{ super() }}
+</script>
+{% endblock %}

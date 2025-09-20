@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card receipt">
+  <div class="card-body">
+    <div class="text-center mb-3">
+      <h4>{{ user['shop_name'] }}</h4>
+      <div class="small text-muted">{{ user['shop_address'] }}</div>
+    </div>
+    <div class="mb-2 d-flex justify-content-between">
+      <div>Bill #{{ bill['id'] }}</div>
+      <div>{{ bill['created_at'] }}</div>
+    </div>
+
+    <table class="table table-sm">
+      <thead><tr><th>Item</th><th>Qty</th><th>Rate</th><th>Amount</th></tr></thead>
+      <tbody>
+        {% for it in items %}
+        <tr>
+          <td>{{ it['item_name'] }} {% if it['unit'] %} ({{ it['unit'] }}){% endif %}</td>
+          <td>{{ it['quantity'] }}</td>
+          <td>₹ {{ '%.2f'|format(it['price_per_unit']) }}</td>
+          <td>₹ {{ '%.2f'|format(it['subtotal']) }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <div class="d-flex justify-content-between mt-3">
+      <div>Payment: <strong>{{ bill['payment_method'] }}</strong></div>
+      <div class="h5">Total: ₹ {{ '%.2f'|format(bill['total']) }}</div>
+    </div>
+
+    <div class="text-center small text-muted mt-4">Thank you for shopping — {{ user['name'] }}</div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+  <div class="col-md-6">
+    <div class="card p-3">
+      <h5>Profile</h5>
+      <form method="post">
+        <div class="mb-2"><label class="form-label">Name</label><input class="form-control" name="name" value="{{ user['name'] }}"></div>
+        <div class="mb-2"><label class="form-label">Shop name</label><input class="form-control" name="shop_name" value="{{ user['shop_name'] }}"></div>
+        <div class="mb-2"><label class="form-label">Shop address</label><input class="form-control" name="shop_address" value="{{ user['shop_address'] }}"></div>
+        <div class="mb-2"><label class="form-label">Language</label>
+          <select class="form-select" name="language">
+            <option value="en" {% if user['language']=='en' %}selected{% endif %}>English</option>
+            <option value="hi" {% if user['language']=='hi' %}selected{% endif %}>हिन्दी</option>
+            <option value="mr" {% if user['language']=='mr' %}selected{% endif %}>मराठी</option>
+          </select>
+        </div>
+        <button class="btn btn-primary">Save</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
